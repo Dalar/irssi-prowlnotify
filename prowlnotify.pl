@@ -128,10 +128,12 @@ sub msg_pub
 		return;
 	}
 	if ($data =~ /$server->{nick}/i) {
-		debug("Got pub msg with my name in $target");
+		debug("Got pub msg with my nick in $target");
 		send_prowl ("Mention $target", $nick . ': ' . $data);
 	}
-
+	else if ($data =~ /\<a+r+t+u.*/) {
+		debug("Got pub msg with my name in $target");
+		send_prowl ("Mention $target", $nick . ': ' . $data);
 }
 
 sub msg_pri
